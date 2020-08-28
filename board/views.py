@@ -7,6 +7,32 @@ from django.forms.models import model_to_dict
 import math
 import smtplib
 from email.mime.text import MIMEText
+import time
+
+
+def upload(request):
+    if request.method == 'POST':
+        upload_file = request.FILES['upload_file']
+        # 파일 저장
+        # open('', '')
+        # file.write('내용')
+        file_name = upload_file.name
+
+        # 만약 파일명이 중복되었다면.. image.jpg
+        # image  .jpg
+        idx = file_name.find('.')
+
+        file1 = file_name[0:idx]  # image
+        file2 = file_name[idx:]  # jpg
+        sep = time.time()  # unix time 밀리세컨드
+        file_name = file1 + str(sep) + file2
+
+        with open('article/static/' + file_name, 'wb') as file:
+            for chunk in upload_file.chunks():
+                file.write(chunk)
+        return HttpResponse(upload_file.name)
+
+    return render(request, 'upload.html')
 
 
 def contact(request):

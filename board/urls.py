@@ -31,5 +31,6 @@ urlpatterns = [
     path('test', views.test),
     path('map/', views.map),
     path('map_data/', views.map_data),
-    path('contact/', views.contact)
+    path('contact/', views.contact),
+    path('upload/', views.upload)
 ]
