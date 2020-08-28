@@ -28,5 +28,7 @@ urlpatterns = [
     path('article/detail/<int:id>/', views.detail),
     path('article/update/<int:id>/', views.update),
     path('article/delete/<int:id>/', views.delete),
-    path('test', views.test)
+    path('test', views.test),
+    path('map/', views.map),
+    path('map_data/', views.map_data)
 ]
